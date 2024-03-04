@@ -6,12 +6,10 @@ import { User, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "./firebaseConfig";
 import Login from "./app/screens/Login";
 import HomeScreen from "./app/screens/HomeScreen";
-import AvesScreen from "./app/screens/AvesScreen";
 import AprenderScreen from "./app/screens/AprenderScreen";
 import DetalleAve from "./app/screens/DetalleAve";
-import Emergencia from "./app/screens/Emergencia";
+import AvesScreen from "./app/screens/AvesScreen";
 import { Image } from "react-native";
-import Aves from "./app/screens/Aves";
 
 const Stack = createNativeStackNavigator()
 
@@ -52,7 +50,7 @@ function MyTabs() {
           ,
           headerShown: false
         }}
-        name="Emergencia" component={Emergencia} />
+        name="AvesScreen" component={AvesScreen} />
     </Tab.Navigator>
   )
 }

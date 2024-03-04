@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 8,
     resizeMode: "contain",
-
   },
   birdInfo: {
     padding: 20,

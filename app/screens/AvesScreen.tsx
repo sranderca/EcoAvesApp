@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-import { collection, getDocs } from 'firebase/firestore';
+import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { FIREBASE_STORE } from '../../firebaseConfig';
 import Constants from "expo-constants";
 
-const Emergencia = ({ navigation }) => {
+const AvesScreen = ({ navigation }) => {
   interface Aves {
     nombre: string;
     nom_cientifico: string;
@@ -15,13 +15,16 @@ const Emergencia = ({ navigation }) => {
   }
 
   const [aves, setAves] = useState<Aves[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSearchInput, setShowSearchInput] = useState(false);
 
   useEffect(() => {
     async function fetchAves() {
       try {
         const AvesCollection = collection(FIREBASE_STORE, "Aves");
-        const querySnapshot = await getDocs(AvesCollection);
+        const q = query(AvesCollection, where("nombre", ">=", searchQuery));
 
+        const querySnapshot = await getDocs(q);
         const fetchedAves: Aves[] = querySnapshot.docs.map((doc) => {
           const data = doc.data();
           return {
@@ -41,10 +44,15 @@ const Emergencia = ({ navigation }) => {
     }
 
     fetchAves();
-  }, []);
+  }, [searchQuery]);
 
   const handleAvePress = (ave: Aves) => {
     navigation.navigate('DetalleAve', { ave });
+  };
+
+  const toggleSearchInput = () => {
+    setShowSearchInput(!showSearchInput);
+    setSearchQuery('');
   };
 
   const renderAve = ({ item }: { item: Aves }) => (
@@ -59,16 +67,26 @@ const Emergencia = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+
       <Image
         source={require("../../assets/screenGeneral.png")}
         style={[StyleSheet.absoluteFill]}
       />
       <View style={styles.head}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Explorar Aves</Text>
-        </View>
+        {showSearchInput ? (
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Buscar ave..."
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+          />
+        ) : (
+          <TouchableOpacity style={styles.titleContainer} onPress={toggleSearchInput}>
+            <Text style={styles.title}>Explorar Aves</Text>
+          </TouchableOpacity>
+        )}
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={toggleSearchInput}>
             <Image
               source={require('../../assets/search.png')}
               style={[styles.button, { marginRight: 20 }]}
@@ -121,6 +139,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 15
   },
+  searchInput: {
+    flex: 1,
+    marginRight: 20,
+    fontSize: 18
+  },
   titleContainer: {
     flex: 1,
     marginRight: 20,
@@ -167,4 +190,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Emergencia;
+export default AvesScreen;
