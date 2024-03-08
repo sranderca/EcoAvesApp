@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 
 
-const Aprender = () => {
-  const [leccionActual, setLeccionActual] = useState(1);
+const Aprender = ({ navigation }) => {
 
   const lecciones = [
     {
-      titulo: 'Lección 1: Sé un buen amigo de las aves',
+      titulo: 'Lección 1: La alimentación de los colibríes',
       texto: 'En esta lección aprenderás cómo ayudar a las aves en tu entorno.',
       imagen: 'https://scontent.fclo1-3.fna.fbcdn.net/v/t39.30808-6/405057234_849154273881885_7464129580886231320_n.jpg?stp=dst-jpg_s960x960&_nc_cat=101&ccb=1-7&_nc_sid=783fdb&_nc_ohc=EszEhbdmfv0AX8x5Cur&_nc_ht=scontent.fclo1-3.fna&oh=00_AfA5nT0_Q7i3Hznz17s7LV4NZRjI1u9P-uHwrcUl9Ka2xg&oe=65D425B8',
     },
@@ -28,8 +27,8 @@ const Aprender = () => {
     },
   ];
 
-  const cambiarLeccion = (lesson: number) => {
-    setLeccionActual(lesson);
+  const navegationLection = () => {
+    navigation.navigate("Leccion1");
   };
   return (
     <View style={styles.container}>
@@ -51,8 +50,8 @@ const Aprender = () => {
           {lecciones.map((lesson, index) => (
             <TouchableOpacity
               key={index}
-              onPress={() => cambiarLeccion(index + 1)}
-              style={[styles.leccion, leccionActual === index + 1 && styles.leccionActiva]}>
+              onPress={navegationLection}
+              style={styles.leccion}>
               <Text style={styles.textoLeccion}>{lesson.titulo}</Text>
               <View style={styles.imageContainer}>
                 <Image source={{ uri: lesson.imagen }} style={styles.imagenLecciones} />
