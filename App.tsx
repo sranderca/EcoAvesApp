@@ -10,8 +10,9 @@ import AprenderScreen from "./app/screens/AprenderScreen";
 import DetalleAve from "./app/screens/DetalleAve";
 import AvesScreen from "./app/screens/AvesScreen";
 import { Image } from "react-native";
-import Registro from "./app/screens/Registro";
-import Leccion1 from "./app/screens/lecciones/Leccion1";
+import MenuLection from "./app/lessoonLection/MenuLection";
+import Lection from "./app/lessoonLection/Lection";
+import RegistroUsuario from "./app/screens/RegistroUsuario";
 
 const Stack = createNativeStackNavigator()
 
@@ -41,7 +42,7 @@ function MyTabs() {
           ),
           headerShown: false
         }}
-        name="Home" component={Registro} />
+        name="Home" component={RegistroUsuario} />
       <Tab.Screen
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -73,7 +74,9 @@ export default function App() {
         {user ? <Stack.Screen name='Tab' component={MyTabs} options={{ headerShown: false }} /> :
           <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />}
         <Stack.Screen name="DetalleAve" component={DetalleAve} options={{ headerShown: false }} />
-        <Stack.Screen name="Leccion1" component={Leccion1} options={{ headerShown: false }} />
+        <Stack.Screen name="MenuLection" component={MenuLection} options={{ headerShown: false }} />
+        <Stack.Screen name="Lection" component={Lection} options={{ headerShown: false }} />
+        <Stack.Screen name="AprenderScreen" component={AprenderScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

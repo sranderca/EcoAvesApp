@@ -12,7 +12,6 @@ import {
 import obtenerAves from "../data/obtenerAves";
 import Constants from "expo-constants";
 
-
 const AvesScreen = ({ navigation }) => {
   const [aves, setAves] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -41,7 +40,7 @@ const AvesScreen = ({ navigation }) => {
   }, []);
 
   const MenuLateral = () => (
-    <View style={{ flex: 1, backgroundColor: '#fff', padding: 20 }}>
+    <View style={{ flex: 1, backgroundColor: "#fff", padding: 20 }}>
       <Text>Opciones del Menú</Text>
       {/* Agrega aquí los elementos del menú */}
     </View>
