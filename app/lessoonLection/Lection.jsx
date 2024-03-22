@@ -52,7 +52,7 @@ const Lection = ({ route, navigation }) => {
   );
 
   const handleFinalizar = () => {
-    navigation.navigate("Tab");
+    navigation.navigate("FinalLection", { idLection: idLection });
   };
 
   return (

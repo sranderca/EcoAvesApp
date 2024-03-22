@@ -13,6 +13,7 @@ import { Image } from "react-native";
 import MenuLection from "./app/lessoonLection/MenuLection";
 import Lection from "./app/lessoonLection/Lection";
 import RegistroUsuario from "./app/screens/RegistroUsuario";
+import FinalLection from "./app/lessoonLection/FinalLection";
 
 const Stack = createNativeStackNavigator()
 
@@ -76,7 +77,7 @@ export default function App() {
         <Stack.Screen name="DetalleAve" component={DetalleAve} options={{ headerShown: false }} />
         <Stack.Screen name="MenuLection" component={MenuLection} options={{ headerShown: false }} />
         <Stack.Screen name="Lection" component={Lection} options={{ headerShown: false }} />
-        <Stack.Screen name="AprenderScreen" component={AprenderScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="FinalLection" component={FinalLection} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
