@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "./firebaseConfig";
 import Login from "./app/screens/Login";
-import HomeScreen from "./app/screens/HomeScreen";
 import AprenderScreen from "./app/screens/AprenderScreen";
 import DetalleAve from "./app/screens/DetalleAve";
 import AvesScreen from "./app/screens/AvesScreen";
@@ -14,6 +13,8 @@ import MenuLection from "./app/lessoonLection/MenuLection";
 import Lection from "./app/lessoonLection/Lection";
 import RegistroUsuario from "./app/screens/RegistroUsuario";
 import FinalLection from "./app/lessoonLection/FinalLection";
+import MenuQuestion from "./app/lessoonLection/MenuQuestion";
+import Questions from "./app/lessoonLection/Questions";
 
 const Stack = createNativeStackNavigator()
 
@@ -78,6 +79,8 @@ export default function App() {
         <Stack.Screen name="MenuLection" component={MenuLection} options={{ headerShown: false }} />
         <Stack.Screen name="Lection" component={Lection} options={{ headerShown: false }} />
         <Stack.Screen name="FinalLection" component={FinalLection} options={{ headerShown: false }} />
+        <Stack.Screen name="MenuQuestion" component={MenuQuestion} options={{ headerShown: false }} />
+        <Stack.Screen name="Questions" component={Questions} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

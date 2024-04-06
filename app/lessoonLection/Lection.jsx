@@ -52,7 +52,7 @@ const Lection = ({ route, navigation }) => {
   );
 
   const handleFinalizar = () => {
-    navigation.navigate("FinalLection", { idLection: idLection });
+    navigation.navigate("FinalLection", { lection });
   };
 
   return (
@@ -66,15 +66,17 @@ const Lection = ({ route, navigation }) => {
         inactiveDotOpacity={1}
         inactiveDotScale={1.8}
       />
-      <Carousel
-        layout={"default"}
-        data={sectionLections}
-        renderItem={renderSectionLection}
-        keyExtractor={(item) => item.id}
-        sliderWidth={Dimensions.get("window").width}
-        itemWidth={300}
-        onSnapToItem={(index) => setActiveIndex(index)}
-      />
+      {sectionLections.length > 0 && (
+        <Carousel
+          layout={"default"}
+          data={sectionLections}
+          renderItem={renderSectionLection}
+          keyExtractor={(item) => item.id}
+          sliderWidth={Dimensions.get("window").width}
+          itemWidth={300}
+          onSnapToItem={(index) => setActiveIndex(index)}
+        />
+      )}
     </View>
   );
 };

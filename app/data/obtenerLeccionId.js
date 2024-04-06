@@ -1,5 +1,5 @@
 import { doc, getDoc } from "firebase/firestore";
-import { FIREBASE_STORE } from '../../firebaseConfig'; // Suponiendo que aquí está configurada tu instancia de Firestore
+import { FIREBASE_STORE } from '../../firebaseConfig'; 
 
 const obtenerLeccionPorId = async (idLeccion) => {
   try {
